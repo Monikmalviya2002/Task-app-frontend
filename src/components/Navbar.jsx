@@ -26,7 +26,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full  bg-gray-200 shadow-md px-6 py-4 flex justify-between items-center">
+    <nav className="w-full  bg-gray-100 shadow-md px-6 py-4 flex justify-between items-center">
       <div className="text-xl font-bold text-gray-800">{user && (
           <span className="text-gray-700 font-bold mt-2">Welcome, {user.username}</span>
         )}</div>

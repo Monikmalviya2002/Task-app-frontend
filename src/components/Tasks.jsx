@@ -4,59 +4,62 @@ import { useDispatch } from "react-redux";
 import { FiTrash2, FiEdit, FiPlus } from "react-icons/fi";
 import { addTask, removeTask } from "../utils/taskSlice";
 
-const BASE_URL = "http://localhost:7777/api";
+      const BASE_URL = "http://localhost:7777/api";
 
-const Tasks = () => {
-  const [tasks, setTasks] = useState([]);
-  const [form, setForm] = useState({ title: "", description: "", status: "pending" });
-  const [editing, setEditing] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+         const Tasks = () => {
+          const [tasks, setTasks] = useState([]);
+         const [form, setForm] = useState({ title: "", description: "", status: "pending" });
+         const [editing, setEditing] = useState(null);
+       const [showModal, setShowModal] = useState(false);
 
       const dispatch = useDispatch();
 
-  // Load tasks
-  const loadTasks = async () => {
-    const res = await axios.get(`${BASE_URL}/tasks`, { withCredentials: true });
-    setTasks(res.data.tasks);
-  };
+ 
+      const loadTasks = async () => {
+       const res = await axios.get(`${BASE_URL}/tasks`, { withCredentials: true });
+       setTasks(res.data.tasks);
+         };
 
-  useEffect(() => {
-    loadTasks();
-  }, []);
+          useEffect(() => {
+          loadTasks();
+       }, []);
 
-  const submitTask = async () => {
-    if (!form.title) return;
+         const submitTask = async () => {
+         if (!form.title) return;
 
-    if (editing) {
-      await axios.post(`${BASE_URL}/update/${editing}`, form, { withCredentials: true });
-          dispatch(addTask(res.data)); 
+             if (editing) {
+            const res = await axios.post(`${BASE_URL}/update/${editing}`, form, { withCredentials: true });
+             
+            dispatch(addTask(res.data)); 
 
-    } else {
-      await axios.post(`${BASE_URL}/create`, form, { withCredentials: true });
-    }
+             } else {
+           const res=  await axios.post(`${BASE_URL}/create`, form, { withCredentials: true });
+            dispatch(addTask(res.data))
+             }
 
-    setShowModal(false);
-    setEditing(null);
-    setForm({ title: "", description: "", status: "pending" });
-    loadTasks();
-  };
+         setShowModal(false);
+            setEditing(null);
+             setForm({ title: "", description: "", status: "pending" });
+             loadTasks();
+              };
 
-  const deleteTask = async (id) => {
-    await axios.delete(`${BASE_URL}/delete/${id}`, { withCredentials: true });
-    dispatch(removeTask(res.data))
-    loadTasks();
-  };
+           const deleteTask = async (id) => {
+           const res = await axios.delete(`${BASE_URL}/delete/${id}`, { withCredentials: true });
+          console.log("API response:", res.data);
+              dispatch(removeTask(res.data))
+              loadTasks();
+               };
 
   const columns = [
-    { name: "Pending", key: "pending", color: "bg-yellow-50", badge: "bg-yellow-200 text-yellow-800" },
-    { name: "In Progress", key: "in-progress", color: "bg-blue-50", badge: "bg-blue-200 text-blue-800" },
-    { name: "Completed", key: "completed", color: "bg-green-50", badge: "bg-green-200 text-green-800" },
-  ];
+       { name: "Pending", key: "pending", color: "bg-yellow-50", badge: "bg-yellow-200 text-yellow-800" },
+      { name: "In Progress", key: "in-progress", color: "bg-blue-50", badge: "bg-blue-200 text-blue-800" },
+     { name: "Completed", key: "completed", color: "bg-green-50", badge: "bg-green-200 text-green-800" },
+       ];
 
-  return (
-    <div className="p-6 flex flex-col min-h-screen">
+     return (
+      <div className="p-6 flex flex-col min-h-screen">
 
-      {/* TOP BAR */}
+     
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Manage your task</h2>
         <button
@@ -71,13 +74,13 @@ const Tasks = () => {
         </button>
       </div>
 
-      {/* KANBAN GRID */}
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 overflow-y-auto">
         {columns.map((col) => (
           <div key={col.key} className={`rounded-xl shadow-md p-4 flex flex-col ${col.color} max-h-[75vh]`}>
             <h3 className="text-xl font-semibold mb-4">{col.name}</h3>
 
-            {/* SCROLLABLE TASK LIST */}
+            
             <div className="flex-1 overflow-y-auto space-y-4">
               {tasks
                 .filter((t) => t.status === col.key)
@@ -124,7 +127,7 @@ const Tasks = () => {
         ))}
       </div>
 
-      {/* MODAL */}
+      
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
           <div className="bg-white w-96 p-6 rounded-xl shadow-xl">

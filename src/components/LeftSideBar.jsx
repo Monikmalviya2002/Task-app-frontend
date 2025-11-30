@@ -16,7 +16,7 @@ const LeftSidebar = () => {
   ];
 
   return (
-    <div className="w-50 min-h-screen bg-gray-200 text-black flex flex-col p-4">
+    <div className="w-50 min-h-screen bg-gray-100 text-black flex flex-col p-4">
       <h1 className="text-2xl font-bold mb-8 mt-2">Task Manager</h1>
       <nav className="flex flex-col gap-3">
         {links.map((link) => (
