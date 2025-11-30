@@ -1,7 +1,7 @@
 # Task Management App - Frontend
 
 ## Overview
-This is the frontend of the Task Management Application. It is built using **React**, **TailwindCSS**, **Redux Toolkit**, and **React Hook Form/Zod** for form validation. The app communicates with a backend API to provide secure user authentication and task management features.
+This is the frontend of the Task Management Application. It is built using **React**, **TailwindCSS**, **Redux Toolkit**. The app communicates with a backend API to provide secure user authentication and task management features.
 
 ---
 
@@ -10,8 +10,6 @@ This is the frontend of the Task Management Application. It is built using **Rea
 - **TailwindCSS** for styling
 - **Redux Toolkit** for state management
 - **Axios** for API requests
-- **React Hook Form + Zod** for form validation
-- **Jest + React Testing Library** for testing (Optional)
 
 ---
 
@@ -33,9 +31,6 @@ This is the frontend of the Task Management Application. It is built using **Rea
      - `description` (optional)
      - `status` (pending, completed)
    - Users can only manage their own tasks
-
-3. **Form Validation**
-   - Frontend validation using **React Hook Form + Zod**
 
 ---
 
