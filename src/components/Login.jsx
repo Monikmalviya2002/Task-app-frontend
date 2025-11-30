@@ -4,6 +4,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/Constant";
 import { addUser } from "../utils/userSlice"; 
 import { useDispatch } from "react-redux";
+import Navbar from "./Navbar";
 
   const Login = () => {
      const [isLogin, setIsLogin] = useState(true);
@@ -13,7 +14,7 @@ import { useDispatch } from "react-redux";
     const [error, setError] = useState("");
 
             const dispatch = useDispatch();
-               const navigate = useNavigate();
+            const navigate = useNavigate();
 
            const handleAuth = async () => {
         try {
@@ -58,7 +59,8 @@ import { useDispatch } from "react-redux";
                   };
 
       return (
-              <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+             
+              <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">   
          <div className="w-full max-w-sm bg-white p-8 rounded-xl shadow-md border border-gray-200">
              <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
                {isLogin ? "Login" : "Sign Up"}
