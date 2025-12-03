@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { FiTrash2, FiEdit, FiPlus } from "react-icons/fi";
 import { addTask, removeTask } from "../utils/taskSlice";
 
+
       const BASE_URL = "http://localhost:7777/api";
 
          const Tasks = () => {
@@ -12,9 +13,8 @@ import { addTask, removeTask } from "../utils/taskSlice";
          const [editing, setEditing] = useState(null);
        const [showModal, setShowModal] = useState(false);
 
-      const dispatch = useDispatch();
-
- 
+      const dispatch = useDispatch();             
+        
       const loadTasks = async () => {
        const res = await axios.get(`${BASE_URL}/tasks`, { withCredentials: true });
        setTasks(res.data.tasks);
@@ -30,13 +30,11 @@ import { addTask, removeTask } from "../utils/taskSlice";
              if (editing) {
             const res = await axios.post(`${BASE_URL}/update/${editing}`, form, { withCredentials: true });
              
-            dispatch(addTask(res.data)); 
-
+            dispatch(addTask(res.data));
              } else {
            const res=  await axios.post(`${BASE_URL}/create`, form, { withCredentials: true });
             dispatch(addTask(res.data))
              }
-
          setShowModal(false);
             setEditing(null);
              setForm({ title: "", description: "", status: "pending" });
@@ -69,9 +67,11 @@ import { addTask, removeTask } from "../utils/taskSlice";
             setForm({ title: "", description: "", status: "pending" });
             setShowModal(true);
           }}
+          
         >
           <FiPlus size={20} /> Add Task
         </button>
+           
       </div>
 
       
@@ -133,9 +133,12 @@ import { addTask, removeTask } from "../utils/taskSlice";
           <div className="bg-white w-96 p-6 rounded-xl shadow-xl">
 
             <h2 className="text-xl font-bold mb-4">{editing ? "Edit Task" : "Add Task"}</h2>
+            
+
+             
 
             <input
-              className="w-full border px-3 py-2 rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border px-3 py-2 rounded mb-5 my-5 focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Title"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
@@ -164,6 +167,7 @@ import { addTask, removeTask } from "../utils/taskSlice";
             >
               {editing ? "Save Changes" : "Add Task"}
             </button>
+             
 
             <button
               className="w-full mt-2 bg-gray-300 py-2 rounded hover:bg-gray-400 transition"

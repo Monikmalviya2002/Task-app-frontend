@@ -6,6 +6,7 @@ import appStore from "./utils/appStore";
 import Dashboard from "./components/Dashboard";
 import "./App.css";
 
+
 function App() {
   return (
     <Provider store={appStore}>
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          
         </Routes>
       </BrowserRouter>
     </Provider>
