@@ -5,7 +5,7 @@ import { FiTrash2, FiEdit, FiPlus } from "react-icons/fi";
 import { addTask, removeTask } from "../utils/taskSlice";
 
 
-      const BASE_URL = "http://localhost:7777/api";
+      const BASE_URL = "https://task-app-backend-1-g5hi.onrender.com/api";
 
          const Tasks = () => {
           const [tasks, setTasks] = useState([]);
